@@ -8,7 +8,7 @@
         to stream limitations on any album that has them set!
       </p>
       <p>
-        <router-link class="inline-block mx-auto py-2 px-4 text-green-600 border-green-600 hover:bg-green-400 hover:bg-opacity-20 border rounded" to="/album">
+        <router-link class="inline-block mx-auto py-2 px-4 text-green-600 border-green-600 hover:bg-green-400 hover:bg-opacity-20 border rounded" to="/album?url=https://frozenstarfall.bandcamp.com/album/infinite-dreams">
           Search
         </router-link>
       </p>  
@@ -21,7 +21,7 @@
         tracks can be cached locally!
       </p>
       <p>
-        <router-link class="inline-block mx-auto py-2 px-4 text-white bg-green-400 hover:bg-green-600 rounded" to="/album">
+        <router-link class="inline-block mx-auto py-2 px-4 text-white bg-green-400 hover:bg-green-600 rounded" to="/album?url=https://frozenstarfall.bandcamp.com/album/infinite-dreams">
           Login
         </router-link>
       </p>

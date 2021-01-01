@@ -13,7 +13,6 @@
       <track-table :trackinfo="TralbumData.trackinfo"/>
     </div>
   </div>
-  <webview src="https://frozenstarfall.bandcamp.com/album/infinite-dreams" preload="preload.js" nodeintegration style="display: none;"></webview>
 </template>
 
 <script>
@@ -37,7 +36,9 @@ export default {
     }
   },
   mounted() {
-    let webview = document.querySelector('webview')
+    let webview = document.querySelector('[bandcamp-navigator]')
+
+    webview.src = this.$route.query.url
 
     webview.addEventListener('ipc-message', event => {
       this.TralbumData = event.args[0]
