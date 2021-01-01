@@ -9,19 +9,19 @@
       </tr>
     </thead>
     <tbody v-if="trackinfo">
-      <tr v-for="track in trackinfo" :key="track.track_num">
-        <td class="border-b border-gray-300">{{ track.track_num }}</td>
-        <td class="border-b border-gray-300">{{ track.title }}</td>
-        <td class="border-b border-gray-300"><audio :src="track.file['mp3-128']" controls></audio></td>
-        <td class="border-b border-gray-300">{{ track.duration }}</td>
-      </tr>
+      <track-table-entry v-for="track in trackinfo" :track="track" :key="track.track_num"/>
     </tbody>
   </table>
 </template>
 
 <script>
+import TrackTableEntry from './TrackTableEntry.vue'
+
 export default {
   name: 'TrackTable',
+  components: {
+    TrackTableEntry
+  },
   props: {
     trackinfo: Object
   }
