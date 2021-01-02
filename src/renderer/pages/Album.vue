@@ -8,6 +8,17 @@
           <p class="font-bold mb-2">{{ TralbumData.current.artist || TralbumData.artist }}</p>
           <p>{{TralbumData.trackinfo.length }} tracks, released {{ releaseDate }}</p>
         </div>
+        <tab-list v-model="activeTab">
+          <tab-list-entry :active=true>
+            Track List
+          </tab-list-entry>
+          <tab-list-entry>
+            About & Credits
+          </tab-list-entry>
+          <tab-list-entry>
+            Reviews
+          </tab-list-entry>
+        </tab-list>
       </div>
     </div>
   
@@ -18,16 +29,21 @@
 </template>
 
 <script>
+import TabList from '../components/TabList.vue'
+import TabListEntry from '../components/TabListEntry.vue'
 import TrackTable from '../components/TrackTable.vue'
 
 export default {
   name: 'Album',
   components: {
+    TabList,
+    TabListEntry,
     TrackTable
   },
   data() {
     return {
-      TralbumData: null
+      TralbumData: null,
+      activeTab: 0
     }
   },
   computed: {
