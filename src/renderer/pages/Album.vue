@@ -1,15 +1,17 @@
 <template>
   <div v-if="TralbumData">
-    <div class="flex p-4">
-      <img class="max-w-xs h-auto" :src="'https://f4.bcbits.com/img/a' +  TralbumData.art_id  + '_16.jpg'"/>
-      <div class="flex-grow self-center ml-4">
-        <h1 class="font-extrabold text-6xl">{{ TralbumData.current.title }}</h1>
-        <p class="font-bold mb-2">{{ TralbumData.current.artist || TralbumData.artist }}</p>
-        <p>{{TralbumData.trackinfo.length }} tracks, released {{ releaseDate }}</p>
+    <div class="px-4 pt-4 border-b border-gray-300 bg-white shadow">
+      <div class="container mx-auto flex flex-wrap">
+        <img class="max-w-xs h-auto" :src="'https://f4.bcbits.com/img/a' +  TralbumData.art_id  + '_16.jpg'"/>
+        <div class="flex-grow self-center ml-4">
+          <h1 class="font-extrabold text-6xl">{{ TralbumData.current.title }}</h1>
+          <p class="font-bold mb-2">{{ TralbumData.current.artist || TralbumData.artist }}</p>
+          <p>{{TralbumData.trackinfo.length }} tracks, released {{ releaseDate }}</p>
+        </div>
       </div>
     </div>
   
-    <div class="p-4">
+    <div class="container mx-auto py-4">
       <track-table :trackinfo="TralbumData.trackinfo"/>
     </div>
   </div>
