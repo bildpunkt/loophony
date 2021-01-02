@@ -6,7 +6,7 @@
         <div class="flex-grow self-center ml-4">
           <h1 class="font-extrabold text-6xl">{{ TralbumData.current.title }}</h1>
           <p class="font-bold mb-2">{{ TralbumData.current.artist || TralbumData.artist }}</p>
-          <p>{{TralbumData.trackinfo.length }} tracks, released {{ releaseDate }}</p>
+          <p>{{ TralbumData.trackinfo.length }} tracks, released {{ releaseDate }}</p>
         </div>
         <tab-list v-model="activeTab">
           <tab-list-entry :active=true>
@@ -21,9 +21,19 @@
         </tab-list>
       </div>
     </div>
-  
+
     <div class="container mx-auto py-4">
-      <track-table :trackinfo="TralbumData.trackinfo"/>
+      <tab-container :activeTab="activeTab">
+        <tab-content :active=true>
+          <track-table :trackinfo="TralbumData.trackinfo"/>
+        </tab-content>
+        <tab-content>
+          <p>TODO: About</p>
+        </tab-content>
+        <tab-content>
+          <p>TODO: Reviews</p>
+        </tab-content>
+      </tab-container>
     </div>
   </div>
 </template>
@@ -31,6 +41,8 @@
 <script>
 import TabList from '../components/TabList.vue'
 import TabListEntry from '../components/TabListEntry.vue'
+import TabContainer from '../components/TabContainer.vue'
+import TabContent from '../components/TabContent.vue'
 import TrackTable from '../components/TrackTable.vue'
 
 export default {
@@ -38,6 +50,8 @@ export default {
   components: {
     TabList,
     TabListEntry,
+    TabContainer,
+    TabContent,
     TrackTable
   },
   data() {
