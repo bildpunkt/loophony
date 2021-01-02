@@ -6,18 +6,17 @@
       <p>{{ FanData.followers_count }} followers, {{ followingCount }} following</p>
     </div>
   </div>
-  <div class="flex flex-wrap p-4" v-if="CollectionItems">
-    <div class="w-1/5 pb-4" v-for="item in CollectionItems" :key="item.album_id">
-      <img class="max-w-xs h-auto" :src="item.item_art.url"/>
-      <p class="font-bold">{{ item.album_title }}</p>
-      <p>{{ item.band_name }}</p>
-    </div>
-  </div>
+  <collection-grid :collectionItems="CollectionItems" v-if="CollectionItems"/>
 </template>
 
 <script>
+import CollectionGrid from '../components/CollectionGrid.vue'
+
 export default {
   name: 'Profile',
+  components: {
+    CollectionGrid
+  },
   data() {
     return {
       FanData: null,
