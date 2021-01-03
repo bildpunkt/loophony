@@ -31,11 +31,11 @@
           <div class="flex">
             <div class="w-1/2 px-4">
               <h2 class="text-xl font-medium mb-2">About</h2>
-              <div v-html="aboutText"></div>
+              <div v-html="aboutText" v-if="TralbumData.current.about"></div>
             </div>
             <div class="w-1/2 px-4">
               <h2 class="text-xl font-medium mb-2">Credits</h2>
-              <div v-html="creditsText"></div>
+              <div v-html="creditsText" v-if="TralbumData.current.credits"></div>
             </div>
           </div>
         </tab-content>
