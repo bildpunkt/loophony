@@ -28,7 +28,16 @@
           <track-table :trackinfo="TralbumData.trackinfo"/>
         </tab-content>
         <tab-content>
-          <p>TODO: About</p>
+          <div class="flex">
+            <div class="w-1/2 px-4">
+              <h2 class="text-xl font-medium mb-2">About</h2>
+              <div v-html="aboutText"></div>
+            </div>
+            <div class="w-1/2 px-4">
+              <h2 class="text-xl font-medium mb-2">Credits</h2>
+              <div v-html="creditsText"></div>
+            </div>
+          </div>
         </tab-content>
         <tab-content>
           <p>TODO: Reviews</p>
@@ -39,6 +48,8 @@
 </template>
 
 <script>
+import escs2html from '../utilities/escs2html'
+
 import TabList from '../components/TabList.vue'
 import TabListEntry from '../components/TabListEntry.vue'
 import TabContainer from '../components/TabContainer.vue'
@@ -65,6 +76,12 @@ export default {
       let date = new Date(this.TralbumData.current.release_date)
 
       return date.toLocaleDateString()
+    },
+    aboutText: function() {
+      return escs2html(this.TralbumData.current.about)
+    },
+    creditsText: function() {
+      return escs2html(this.TralbumData.current.credits)
     }
   },
   mounted() {
