@@ -1,26 +1,24 @@
 <template>
   <div v-if="TralbumData">
-    <div class="px-4 pt-4 border-b border-gray-300 bg-white shadow">
-      <div class="container mx-auto flex flex-wrap">
-        <img class="max-w-xs h-auto" :src="'https://f4.bcbits.com/img/a' +  TralbumData.art_id  + '_16.jpg'"/>
-        <div class="flex-grow self-center ml-4">
-          <h1 class="font-extrabold text-6xl">{{ TralbumData.current.title }}</h1>
-          <p class="font-bold mb-2">{{ TralbumData.current.artist || TralbumData.artist }}</p>
-          <p>{{ TralbumData.trackinfo.length }} tracks, released {{ releaseDate }}</p>
-        </div>
-        <tab-list v-model="activeTab">
-          <tab-list-entry :active=true>
-            Track List
-          </tab-list-entry>
-          <tab-list-entry>
-            About & Credits
-          </tab-list-entry>
-          <tab-list-entry>
-            Reviews
-          </tab-list-entry>
-        </tab-list>
+    <page-header>
+      <img class="max-w-xs h-auto" :src="'https://f4.bcbits.com/img/a' +  TralbumData.art_id  + '_16.jpg'"/>
+      <div class="flex-grow self-center ml-4">
+        <h1 class="font-extrabold text-6xl">{{ TralbumData.current.title }}</h1>
+        <p class="font-bold mb-2">{{ TralbumData.current.artist || TralbumData.artist }}</p>
+        <p>{{ TralbumData.trackinfo.length }} tracks, released {{ releaseDate }}</p>
       </div>
-    </div>
+      <tab-list v-model="activeTab">
+        <tab-list-entry :active=true>
+          Track List
+        </tab-list-entry>
+        <tab-list-entry>
+          About & Credits
+        </tab-list-entry>
+        <tab-list-entry>
+          Reviews
+        </tab-list-entry>
+      </tab-list>
+    </page-header>
 
     <div class="container mx-auto py-4">
       <tab-container :activeTab="activeTab">
@@ -50,6 +48,7 @@
 <script>
 import escs2html from '../utilities/escs2html'
 
+import PageHeader from '../components/PageHeader.vue'
 import TabList from '../components/TabList.vue'
 import TabListEntry from '../components/TabListEntry.vue'
 import TabContainer from '../components/TabContainer.vue'
@@ -59,6 +58,7 @@ import TrackTable from '../components/TrackTable.vue'
 export default {
   name: 'Album',
   components: {
+    PageHeader,
     TabList,
     TabListEntry,
     TabContainer,
