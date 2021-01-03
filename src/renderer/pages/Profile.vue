@@ -1,24 +1,64 @@
 <template>
-  <div class="flex p-4" v-if="FanData">
+  <page-header v-if="FanData">
     <img class="max-w-xs h-auto" :src="photoURL"/>
     <div class="flex-grow self-center ml-4">
       <h1 class="font-extrabold text-6xl mb-4">{{ FanData.username }}</h1>
-      <p>{{ FanData.followers_count }} followers, {{ followingCount }} following</p>
+      <p v-if="FanData.bio">{{ FanData.bio }}</p>
     </div>
+    <tab-list v-model="activeTab">
+      <tab-list-entry :active=true>
+        Collection
+      </tab-list-entry>
+      <tab-list-entry>
+        Wishlist
+      </tab-list-entry>
+      <tab-list-entry>
+        {{ FanData.followers_count }} Followers
+      </tab-list-entry>
+      <tab-list-entry>
+        {{ followingCount }} Following
+      </tab-list-entry>
+    </tab-list>
+  </page-header>
+  <div class="container mx-auto py-4">
+    <tab-container :activeTab="activeTab">
+      <tab-content :active=true>
+        <collection-grid :collectionItems="CollectionItems" v-if="CollectionItems"/>
+      </tab-content>
+      <tab-content>
+        <p>TODO: Wishlist</p>
+      </tab-content>
+      <tab-content>
+        <p>TODO: Followers</p>
+      </tab-content>
+      <tab-content>
+        <p>TODO: Following</p>
+      </tab-content>
+    </tab-container>
   </div>
-  <collection-grid :collectionItems="CollectionItems" v-if="CollectionItems"/>
 </template>
 
 <script>
 import CollectionGrid from '../components/CollectionGrid.vue'
+import PageHeader from '../components/PageHeader.vue'
+import TabList from '../components/TabList.vue'
+import TabListEntry from '../components/TabListEntry.vue'
+import TabContainer from '../components/TabContainer.vue'
+import TabContent from '../components/TabContent.vue'
 
 export default {
   name: 'Profile',
   components: {
-    CollectionGrid
+    CollectionGrid,
+    PageHeader,
+    TabList,
+    TabListEntry,
+    TabContainer,
+    TabContent
   },
   data() {
     return {
+      activeTab: 0,
       FanData: null,
       CollectionItems: null
     }
